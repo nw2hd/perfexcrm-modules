@@ -180,5 +180,3 @@ This project is licensed under the **MIT License** — see the [LICENSE](LICENSE
 If you find this module useful, please **star** the repo and share it with the Perfex community. It helps others discover free, open-source alternatives to paid/obfuscated modules.
 
 ---
-
-Need me to also generate a **CHANGELOG.md**, **CONTRIBUTING.md**, or a ready-to-use **module zip folder structure** guide for developers? Just tell me. ```
