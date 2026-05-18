@@ -1,0 +1,35 @@
+/* KYC Manager Styles */
+
+.kyc-doc-card {
+    border: 1px solid #e8e8e8;
+    border-radius: 6px;
+    padding: 12px;
+    margin-bottom: 10px;
+    transition: box-shadow 0.2s;
+}
+.kyc-doc-card:hover {
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+.kyc-audit-item {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 12px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid #f0f0f0;
+}
+.kyc-audit-item:last-child {
+    border-bottom: none;
+}
+
+.kyc-status-card {
+    transition: transform 0.2s;
+}
+.kyc-status-card:hover {
+    transform: translateY(-2px);
+}
+
+@media print {
+    .no-print { display: none !important; }
+    .panel_s { border: none !important; box-shadow: none !important; }
+}
