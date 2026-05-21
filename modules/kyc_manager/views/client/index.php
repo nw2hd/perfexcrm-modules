@@ -46,7 +46,7 @@
                 <th><?php echo _l('kyc_doc_status'); ?></th>
                 <th><?php echo _l('kyc_expiry_date'); ?></th>
                 <th></th>
-            </tr></thead>
+            </table></thead>
             <tbody>
             <?php foreach ($documents as $doc) : ?>
             <tr>
@@ -155,16 +155,43 @@
 </div>
 <script>
 $(function(){
+    // Get CSRF token values
+    var csrf_token_name = '<?php echo $this->security->get_csrf_token_name(); ?>';
+    var csrf_hash = '<?php echo $this->security->get_csrf_hash(); ?>';
+    
     $('#client-upload-btn').on('click', function(){
         var fd   = new FormData($('#client-upload-form')[0]);
+        
+        // ✅ ADD CSRF TOKEN - FIXES THE "PAGE EXPIRED" ERROR
+        fd.append(csrf_token_name, csrf_hash);
+        
         var $btn = $(this);
-        $btn.prop('disabled', true).html('<i class="fa fa-spinner fa-spin"></i>');
+        var fileInput = $('input[name="document_file"]')[0];
+        
+        if (!fileInput.files.length) {
+            alert('Please select a file to upload');
+            return;
+        }
+        
+        $btn.prop('disabled', true).html('<i class="fa fa-spinner fa-spin"></i> Uploading...');
         $.ajax({
             url: '<?php echo site_url('kyc_manager/kyc_client/upload_document'); ?>',
-            type: 'POST', data: fd, processData: false, contentType: false, dataType: 'json',
+            type: 'POST', 
+            data: fd, 
+            processData: false, 
+            contentType: false, 
+            dataType: 'json',
             success: function(r){
-                if (r.success) { location.reload(); }
-                else { alert(r.message); $btn.prop('disabled', false).html('Upload'); }
+                if (r.success) { 
+                    location.reload(); 
+                } else { 
+                    alert(r.message); 
+                    $btn.prop('disabled', false).html('<i class="fa fa-upload"></i> <?php echo _l('kyc_upload'); ?>');
+                }
+            },
+            error: function(xhr, status, error) {
+                alert('Upload failed: ' + error);
+                $btn.prop('disabled', false).html('<i class="fa fa-upload"></i> <?php echo _l('kyc_upload'); ?>');
             }
         });
     });

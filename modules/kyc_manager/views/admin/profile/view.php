@@ -361,7 +361,7 @@
                                 </button>
                                 <?php endif; ?>
                             </td>
-                        </tr>
+                        </table>
                         <?php endforeach; ?>
                         </tbody>
                     </table>
@@ -567,6 +567,10 @@
 <?php init_tail(); ?>
 <script>
 $(function(){
+    // Get CSRF token values
+    var csrf_token_name = '<?php echo $this->security->get_csrf_token_name(); ?>';
+    var csrf_hash = '<?php echo $this->security->get_csrf_hash(); ?>';
+    
     var clientId = <?php echo $client_id; ?>;
 
     // Show/hide rejection reason
@@ -578,17 +582,30 @@ $(function(){
     $('#kyc-change-status').on('click', function(){
         var status = $('#kyc-quick-status').val();
         var reason = $('#kyc-reason').val();
-        $.post(admin_url + 'kyc_manager/change_status', {
-            client_id: clientId, status: status, reason: reason
-        }, function(r){
-            if (r.success) {
-                $('#kyc-status-display').html(r.badge);
-                alert_float('success', r.message);
+        
+        var formData = new FormData();
+        formData.append('client_id', clientId);
+        formData.append('status', status);
+        formData.append('reason', reason);
+        formData.append(csrf_token_name, csrf_hash);
+        
+        $.ajax({
+            url: admin_url + 'kyc_manager/change_status',
+            type: 'POST',
+            data: formData,
+            processData: false,
+            contentType: false,
+            dataType: 'json',
+            success: function(r){
+                if (r.success) {
+                    $('#kyc-status-display').html(r.badge);
+                    alert_float('success', r.message);
+                }
             }
-        }, 'json');
+        });
     });
 
-    // Upload document
+    // Upload document - FIXED WITH CSRF TOKEN
     $('#kyc-upload-doc-btn').on('click', function(){
         var $btn = $(this);
         var fd   = new FormData();
@@ -600,22 +617,38 @@ $(function(){
         fd.append('issuing_country',  $('#doc-country').val());
         fd.append('issue_date',       $('#doc-issue-date').val());
         fd.append('expiry_date',      $('#doc-expiry-date').val());
+        
+        // ✅ ADD CSRF TOKEN HERE - FIXES THE "PAGE EXPIRED" ERROR
+        fd.append(csrf_token_name, csrf_hash);
+        
         var fileInput = document.getElementById('doc-file');
         if (fileInput.files.length > 0) {
             fd.append('document_file', fileInput.files[0]);
+        } else {
+            alert_float('danger', 'Please select a file to upload');
+            return;
         }
-        $btn.prop('disabled', true).html('<i class="fa fa-spinner fa-spin"></i>');
+        
+        $btn.prop('disabled', true).html('<i class="fa fa-spinner fa-spin"></i> Uploading...');
         $.ajax({
             url: admin_url + 'kyc_manager/upload_document',
-            type: 'POST', data: fd, processData: false, contentType: false, dataType: 'json',
+            type: 'POST', 
+            data: fd, 
+            processData: false, 
+            contentType: false, 
+            dataType: 'json',
             success: function(r){
                 if (r.success) {
                     alert_float('success', r.message);
                     location.reload();
                 } else {
                     alert_float('danger', r.message);
-                    $btn.prop('disabled', false).html('<i class="fa fa-upload"></i> Upload');
+                    $btn.prop('disabled', false).html('<i class="fa fa-upload"></i> <?php echo _l('kyc_upload'); ?>');
                 }
+            },
+            error: function(xhr, status, error) {
+                alert_float('danger', 'Upload failed: ' + error);
+                $btn.prop('disabled', false).html('<i class="fa fa-upload"></i> <?php echo _l('kyc_upload'); ?>');
             }
         });
     });
@@ -629,26 +662,46 @@ $(function(){
             notes = prompt('<?php echo _l('kyc_rejection_notes'); ?>', '');
             if (notes === null) return;
         }
-        $.post(admin_url + 'kyc_manager/review_document', {
-            document_id: id, status: action, notes: notes
-        }, function(r){
-            if (r.success) {
-                $('#doc-badge-' + id).html(r.badge);
-                alert_float('success', r.message);
+        
+        var formData = new FormData();
+        formData.append('document_id', id);
+        formData.append('status', action);
+        formData.append('notes', notes);
+        formData.append(csrf_token_name, csrf_hash);
+        
+        $.ajax({
+            url: admin_url + 'kyc_manager/review_document',
+            type: 'POST',
+            data: formData,
+            processData: false,
+            contentType: false,
+            dataType: 'json',
+            success: function(r){
+                if (r.success) {
+                    $('#doc-badge-' + id).html(r.badge);
+                    alert_float('success', r.message);
+                }
             }
-        }, 'json');
+        });
     });
 
     // Delete document
     $(document).on('click', '.btn-delete-doc', function(){
         if (!confirm('<?php echo _l('kyc_delete_doc_confirm'); ?>')) return;
         var id = $(this).data('id');
-        $.post(admin_url + 'kyc_manager/delete_document/' + id, {}, function(r){
-            if (r.success) {
-                $('#doc-row-' + id).fadeOut();
-                alert_float('success', r.message);
+        
+        $.ajax({
+            url: admin_url + 'kyc_manager/delete_document/' + id,
+            type: 'POST',
+            data: { csrf_token_name: csrf_hash },
+            dataType: 'json',
+            success: function(r){
+                if (r.success) {
+                    $('#doc-row-' + id).fadeOut();
+                    alert_float('success', r.message);
+                }
             }
-        }, 'json');
+        });
     });
 
     // Add service
@@ -656,27 +709,47 @@ $(function(){
         var itemId = $('#kyc-service-select').val();
         var notes  = $('#kyc-service-notes').val();
         if (!itemId) return;
-        $.post(admin_url + 'kyc_manager/add_service', {
-            client_id: clientId, item_id: itemId, notes: notes
-        }, function(r){
-            if (r.success) {
-                alert_float('success', r.message);
-                location.reload();
-            } else {
-                alert_float('warning', r.message);
+        
+        var formData = new FormData();
+        formData.append('client_id', clientId);
+        formData.append('item_id', itemId);
+        formData.append('notes', notes);
+        formData.append(csrf_token_name, csrf_hash);
+        
+        $.ajax({
+            url: admin_url + 'kyc_manager/add_service',
+            type: 'POST',
+            data: formData,
+            processData: false,
+            contentType: false,
+            dataType: 'json',
+            success: function(r){
+                if (r.success) {
+                    alert_float('success', r.message);
+                    location.reload();
+                } else {
+                    alert_float('warning', r.message);
+                }
             }
-        }, 'json');
+        });
     });
 
     // Remove service
     $(document).on('click', '.btn-remove-service', function(){
         var id = $(this).data('id');
-        $.post(admin_url + 'kyc_manager/remove_service/' + id, {}, function(r){
-            if (r.success) {
-                $('#svc-row-' + id).fadeOut();
-                alert_float('success', r.message);
+        
+        $.ajax({
+            url: admin_url + 'kyc_manager/remove_service/' + id,
+            type: 'POST',
+            data: { csrf_token_name: csrf_hash },
+            dataType: 'json',
+            success: function(r){
+                if (r.success) {
+                    $('#svc-row-' + id).fadeOut();
+                    alert_float('success', r.message);
+                }
             }
-        }, 'json');
+        });
     });
 });
 </script>
