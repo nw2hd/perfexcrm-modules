@@ -1,0 +1,2853 @@
+.btnIcon {
+    background-color: transparent;
+    padding:3px 4px;
+    font-size:15px
+}
+/* Webmail client styling - compact view with smaller fonts */
+#mailbox {
+    font-size: 13px !important;
+}
+
+/* ============================================
+   FIX: Export dropdown z-index issue
+   ============================================ */
+
+/* Ensure Export dropdown appears in front of EVERYTHING - Force every possible selector */
+div.dt-button-collection,
+.dt-button-collection,
+.dt-buttons .dt-button-collection,
+div.dt-buttons > div.dt-button-collection,
+.dt-button-collection.dropdown-menu,
+div.DTFC_Cloned .dt-button-collection,
+body > .dt-button-collection {
+    z-index: 2147483647 !important;
+    position: fixed !important;
+    background: white !important;
+    background-color: white !important;
+    border: 1px solid rgba(0,0,0,.15) !important;
+    border-radius: 4px !important;
+    box-shadow: 0 6px 12px rgba(0,0,0,.175) !important;
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    pointer-events: all !important;
+    transform: none !important;
+    filter: none !important;
+    will-change: auto !important;
+    max-height: none !important;
+    overflow: visible !important;
+    min-width: 150px !important;
+}
+
+/* Ensure dropdown list has proper styling - COMPACT */
+.dt-button-collection ul.dropdown-menu,
+div.dt-button-collection > ul.dropdown-menu,
+.dt-button-collection > ul,
+div.dt-button-collection ul {
+    max-height: none !important;
+    height: auto !important;
+    overflow: visible !important;
+    overflow-y: visible !important;
+    border: none !important;
+    box-shadow: none !important;
+    margin: 0 !important;
+    padding: 3px 0 !important;
+    display: block !important;
+}
+
+/* Style dropdown items - COMPACT */
+.dt-button-collection li,
+.dt-button-collection li a {
+    display: block !important;
+    padding: 4px 12px !important;
+    clear: both !important;
+    font-weight: normal !important;
+    line-height: 1.3 !important;
+    font-size: 11px !important;
+    color: #333 !important;
+    white-space: nowrap !important;
+}
+
+.dt-button-collection li:hover,
+.dt-button-collection li a:hover {
+    background-color: #f5f5f5 !important;
+    color: #262626 !important;
+}
+
+.dt-button-background {
+    z-index: 9999999 !important;
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+}
+
+/* Ensure dt-buttons container has proper positioning context and MAXIMUM z-index */
+.dt-buttons,
+div.dt-buttons,
+.dt-buttons.btn-group,
+.btn-group.dt-buttons {
+    position: relative !important;
+    z-index: 2147483646 !important; /* Just below max */
+    overflow: visible !important;
+}
+
+/* Force table to have LOW z-index */
+.table-mailbox,
+.table-mailbox-preview,
+.dataTables_scrollBody,
+table.dataTable {
+    z-index: 1 !important;
+    position: relative !important;
+}
+
+.table-mailbox tbody tr,
+.table-mailbox-preview tbody tr {
+    z-index: auto !important;
+}
+
+/* Remove any isolation, transform, or overflow that might create stacking context issues */
+.dataTables_wrapper,
+div.dataTables_wrapper {
+    isolation: auto !important;
+    transform: none !important;
+    overflow: visible !important;
+}
+
+.table-responsive {
+    isolation: auto !important;
+    transform: none !important;
+    overflow: visible !important;
+}
+
+/* Ensure all parent containers allow the dropdown to overflow */
+.panel-body,
+.panel,
+#mailbox,
+#wrapper,
+.content,
+.row,
+.col-md-10,
+.panel_s,
+body {
+    overflow: visible !important;
+}
+
+/* Allow DataTables scroll containers to overflow for dropdowns */
+.dataTables_scroll {
+    overflow: visible !important;
+}
+
+.dataTables_scrollBody {
+    overflow-x: auto !important;
+    overflow-y: visible !important;
+}
+
+/* Ensure wrapper and content don't clip the dropdown */
+#wrapper,
+#wrapper .content {
+    min-height: 100vh !important;
+    overflow: visible !important;
+}
+
+/* ============================================
+   TOOLBAR ELEMENTS - Match DataTables button styling
+   ============================================ */
+
+/* Copy exact styling from btn-default-dt-options to page length dropdown */
+#DataTables_Table_0_length select,
+#DataTables_Table_1_length select,
+.dataTables_length select,
+.dataTables_length select.form-control,
+.form-control.input-sm {
+    display: inline-block !important;
+    padding: 5px 10px !important;
+    margin-bottom: 0 !important;
+    font-size: 12px !important;
+    font-weight: 400 !important;
+    line-height: 1.42857143 !important;
+    text-align: center !important;
+    white-space: nowrap !important;
+    vertical-align: middle !important;
+    touch-action: manipulation !important;
+    cursor: pointer !important;
+    user-select: none !important;
+    background-image: none !important;
+    border: 1px solid #d2d6de !important;
+    border-radius: 4px !important;
+    color: #444 !important;
+    background-color: #fff !important;
+    height: auto !important;
+    min-height: 31px !important;
+    box-shadow: 0 1px 1px rgba(0,0,0,.05) !important;
+}
+
+/* Copy exact styling from btn-default-dt-options to search input */
+.dataTables_filter input,
+.dataTables_filter input.form-control,
+.dataTables_filter input.form-control.input-sm,
+.dataTables_wrapper .dataTables_filter input.form-control.input-sm {
+    display: inline-block !important;
+    padding: 5px 10px !important;
+    margin-bottom: 0 !important;
+    font-size: 12px !important;
+    font-weight: 400 !important;
+    line-height: 1.42857143 !important;
+    white-space: nowrap !important;
+    vertical-align: middle !important;
+    background-image: none !important;
+    border: 1px solid #d2d6de !important;
+    border-radius: 4px !important;
+    color: #444 !important;
+    background-color: #fff !important;
+    height: auto !important;
+    min-height: 31px !important;
+    width: 200px !important;
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075) !important;
+}
+
+/* Hover states */
+#DataTables_Table_0_length select:hover,
+#DataTables_Table_1_length select:hover,
+.dataTables_length select:hover,
+.dataTables_length select.form-control:hover {
+    background-color: #f9f9f9 !important;
+    border-color: #adadad !important;
+}
+
+/* Focus states */
+.dataTables_filter input:focus,
+.dataTables_filter input.form-control:focus {
+    border-color: #3c8dbc !important;
+    outline: 0 !important;
+    box-shadow: none !important;
+}
+
+/* Toolbar wrapper spacing and alignment - match btn-group spacing */
+.dataTables_length {
+    float: left !important;
+    margin-right: 5px !important;
+    display: inline-block !important;
+}
+
+#DataTables_Table_0_length,
+#DataTables_Table_1_length {
+    display: inline-block !important;
+    margin-right: 5px !important;
+}
+
+.dataTables_filter,
+#DataTables_Table_0_filter,
+#DataTables_Table_1_filter {
+    float: right !important;
+    margin: 0 5px !important;
+    text-align: right !important;
+}
+
+.dataTables_length label,
+.dataTables_filter label {
+    font-size: 12px !important;
+    font-weight: normal !important;
+    margin: 0 !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 5px !important;
+}
+
+/* Make search input full width when preview pane is open */
+#mailbox_split_view .dataTables_wrapper .dataTables_filter input.form-control.input-sm,
+#mailbox_split_view .dataTables_filter input,
+#mailbox_list_panel .dataTables_filter input {
+    width: 100% !important;
+    max-width: 100% !important;
+}
+
+.table-mailbox,
+.table-mailbox-preview {
+    font-size: 13px !important;
+}
+
+.table-mailbox a {
+    color: #333333 !important;
+    font-size: 13px !important;
+}
+
+/* Reduce padding and margins for compact webmail look */
+.table-mailbox thead th,
+.table-mailbox-preview thead th {
+    padding-top: 4px !important;
+    padding-bottom: 4px !important;
+    padding-left: 6px !important;
+    padding-right: 6px !important;
+    font-size: 12px !important;
+    line-height: 1.3 !important;
+    font-weight: 600 !important;
+}
+
+.table-mailbox tbody td,
+.table-mailbox-preview tbody td {
+    padding-top: 3px !important;
+    padding-bottom: 3px !important;
+    padding-left: 6px !important;
+    padding-right: 6px !important;
+    font-size: 13px !important;
+    line-height: 1.4 !important;
+}
+
+/* Reduce row height */
+.table-mailbox tbody tr,
+.table-mailbox-preview tbody tr {
+    height: auto !important;
+    min-height: 28px !important;
+}
+
+/* Compact checkbox column */
+.table-mailbox thead th:first-child,
+.table-mailbox-preview thead th:first-child,
+.table-mailbox tbody td:first-child,
+.table-mailbox-preview tbody td:first-child {
+    padding-top: 3px !important;
+    padding-bottom: 3px !important;
+    padding-left: 6px !important;
+    padding-right: 6px !important;
+    width: 40px !important;
+    min-width: 40px !important;
+    max-width: 40px !important;
+}
+
+/* Ensure first column header width is consistent in preview pane */
+.table-mailbox-preview thead th:first-child.sorting_disabled,
+.table-mailbox-preview thead th:first-child,
+#mailbox_list_panel .table-mailbox-preview thead th:first-child,
+#mailbox_list_panel .table-mailbox-preview thead th:first-child.sorting_disabled,
+.dataTables_wrapper .table-mailbox-preview thead th:first-child,
+.dataTables_wrapper .table-mailbox-preview thead th:first-child.sorting_disabled {
+    width: 40px !important;
+    min-width: 40px !important;
+    max-width: 40px !important;
+    box-sizing: border-box !important;
+}
+
+/* Ensure first column header width is consistent in main table */
+.table-mailbox thead th:first-child.sorting_disabled,
+.table-mailbox thead th:first-child,
+#mailbox_full_table .table-mailbox thead th:first-child,
+#mailbox_full_table .table-mailbox thead th:first-child.sorting_disabled,
+.dataTables_wrapper .table-mailbox thead th:first-child,
+.dataTables_wrapper .table-mailbox thead th:first-child.sorting_disabled {
+    width: 40px !important;
+    min-width: 40px !important;
+    max-width: 40px !important;
+    box-sizing: border-box !important;
+}
+
+/* Equal padding for split view columns */
+#mailbox_split_view .col-md-6 {
+    padding-right: 15px !important;
+}
+
+/* Reduce left padding for date column in preview pane to prevent cutoff */
+.table-mailbox-preview tbody td:last-child {
+    padding-left: 2px !important;
+    padding-right: 2px !important;
+}
+
+/* Reduce spacing between table and surrounding elements */
+#mailbox_full_table,
+#mailbox_list_panel {
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+}
+
+/* Reduce panel padding */
+.panel-body {
+    padding: 10px !important;
+}
+
+/* Compact tags */
+.mailbox-tag-label,
+.table-mailbox .label,
+.table-mailbox-preview .label {
+    font-size: 11px !important;
+    padding: 2px 6px !important;
+    margin-right: 3px !important;
+    margin-bottom: 2px !important;
+    line-height: 1.2 !important;
+    display: inline-block;
+}
+
+/* Compact action buttons */
+.mail-actions-trigger {
+    padding: 2px 6px !important;
+    font-size: 12px !important;
+    min-width: 24px !important;
+    height: 24px !important;
+}
+
+/* Compact row actions */
+.mail-row-actions {
+    gap: 4px !important;
+    min-height: 24px !important;
+}
+
+/* Tag spacing in table - Compact webmail style */
+.mailbox-tag-label {
+    display: inline-block;
+    margin-right: 3px !important;
+    margin-bottom: 2px !important;
+    font-size: 11px !important;
+    padding: 2px 6px !important;
+    line-height: 1.2 !important;
+}
+
+.table-mailbox .label,
+.table-mailbox-preview .label {
+    display: inline-block;
+    margin-right: 3px !important;
+    margin-bottom: 2px !important;
+    font-size: 11px !important;
+    padding: 2px 6px !important;
+    line-height: 1.2 !important;
+}
+
+/* Remove DataTables scrollbar and make table 100% height - rely on browser scrollbar */
+.table-responsive {
+    max-height: none !important;
+    overflow-y: hidden !important;
+    overflow-x: hidden !important;
+    max-width: 100% !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+}
+
+/* Prevent table from extending beyond container */
+.table-mailbox,
+.table-mailbox-preview {
+    width: 100% !important;
+    max-width: 100% !important;
+    table-layout: auto;
+    box-sizing: border-box !important;
+}
+
+/* Ensure DataTables wrapper doesn't overflow */
+.dataTables_wrapper {
+    max-width: 100% !important;
+    width: 100% !important;
+    overflow: hidden !important;
+}
+
+/* Ensure last column doesn't overflow */
+.table-mailbox th:last-child,
+.table-mailbox-preview th:last-child,
+.table-mailbox tbody td:last-child,
+.table-mailbox-preview tbody td:last-child {
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.dataTables_scrollBody {
+    max-height: none !important;
+    overflow-y: hidden !important;
+    overflow-x: hidden !important;
+}
+
+.dataTables_wrapper .dataTables_scroll {
+    overflow: hidden !important;
+}
+
+.dataTables_wrapper .dataTables_scrollBody {
+    overflow: hidden !important;
+}
+
+/* Ensure DataTables wrapper doesn't create scrollbars */
+.dataTables_wrapper {
+    overflow: visible !important;
+}
+
+/* Ensure table container doesn't restrict height */
+#mailbox_full_table .table-responsive,
+#mailbox_list_panel .table-responsive {
+    overflow-y: hidden !important;
+    overflow-x: hidden !important;
+}
+
+/* Tags navigation styling */
+.mailbox-tags-nav {
+    border-top: 1px solid #e0e0e0;
+    padding-top: 10px;
+    margin-top: 15px;
+}
+
+.mailbox-tags-nav .mailbox-tag-item a {
+    display: flex;
+    align-items: center;
+    border-radius: 4px;
+    transition: background-color 0.2s;
+}
+
+.mailbox-tags-nav .mailbox-tag-item a:hover {
+    background-color: #f5f5f5;
+}
+
+.mailbox-tags-nav .mailbox-tag-item.active a {
+    background-color: #e3f2fd;
+    font-weight: 600;
+}
+
+/* Tag spacing in table */
+.table-mailbox .label,
+.table-mailbox-preview .label {
+    display: inline-block;
+    margin-right: 5px;
+    margin-bottom: 3px;
+}
+.media:first-child {
+    margin-top: 15px;
+}
+.mt-0, .my-0 {
+    margin-top: 0!important;
+}
+#mailbox .media {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-align: start;
+    align-items: flex-start;
+}
+.mr-2, .mx-2 {
+    margin-right: .5rem!important;
+}
+.rounded-circle {
+    border-radius: 50%!important;
+}
+img {
+    vertical-align: middle;
+    border-style: none;
+}
+.media-body {
+    color: #595e5f;
+    overflow: visible;
+    margin-left: 15px;
+}
+.media-body {
+    -ms-flex: 1;
+    flex: 1;
+}
+.fs-15 {
+    font-size: 15px;
+}
+.float-right {
+    float: right!important;
+}
+@media (min-width: 768px) {
+    .d-md-flex {
+        display: -ms-flexbox!important;
+        display: flex!important;
+    }
+    .d-md-none {
+        display: none!important;
+    }
+}
+.d-none {
+    display: none!important;
+}
+.input-group-select .input-group {
+    width: 100%;
+}
+.input-group-btn:first-child>select+.btn {
+    border-top-right-radius: .375rem !important;
+    border-bottom-right-radius: .375rem !important;
+}
+.media .media-title {
+    margin-top: 0;
+    margin-bottom: 5px;
+    font-weight: 500;
+}
+.text-dark {
+    color: #484c67 !important;
+}
+.media-body p {
+    font-size: 13px !important;
+}
+img.mr-2.rounded-circle {
+    max-width: 36px;
+	float: left;
+}
+.mb-0, .my-0 {
+    margin-bottom: 0!important;
+}
+.mr-2, .mx-2 {
+    margin-right: .5rem!important;
+}
+
+.small, small {
+    font-size: 80%;
+    font-weight: 400;
+}
+.eamil-body {
+    margin-top: 30px;
+}
+.eamil-body p {
+    word-wrap: break-word;
+}
+.cursor{
+    cursor: pointer;
+}
+.orange{
+    color: orange;
+}
+.red{
+    color: red;
+}
+.green{
+	color: #4caf50;
+}
+.grey{
+	color: #c9c9c9;
+}
+.sorting_1 {
+    max-width: 450px;
+}
+#mail_signature {
+    height: 5em;
+    width: 41em;
+}
+.mbpull-left {
+    padding-right: 5px;
+    padding-top: 3px;
+}
+.bootstrap-select .dropdown-toggle .filter-option-inner-inner {
+    white-space: initial;
+}
+#send_mail_modal .modal-dialog {
+    width: 100%;
+    max-width:80%;
+    margin: 1rem auto;
+    height: 80vh;
+}
+#send_mail_modal .modal-dialog .modal-body {
+    min-height: 270px;
+}
+#send_mail_modal .modal-content {
+    height: 100%;
+}
+#send_mail_modal .modal-footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    left:0;
+}
+
+.email-autocomplete {
+    position: relative;
+}
+.email-autocomplete .receipts {
+    position: absolute;
+    top: 60px;
+    padding: 6px 12px;
+    border: 1px solid #cccccc;
+    border-radius: .375rem;
+    width: 100%;
+    background: #ffffff;
+    display: none;
+    z-index: 1;
+}
+.email-autocomplete .receipts.active {
+    display: block;
+}
+.email-autocomplete .receipts .receipt {
+    cursor: pointer;
+    padding: 5px 0;
+}
+
+.mail-tag {
+    display: inline;
+    padding: 0.35rem 0.5rem;
+}
+
+/* Modern horizontal tabs styling */
+.horizontal-scrollable-tabs .horizontal-tabs {
+    background-color: transparent !important;
+    background: transparent !important;
+}
+
+.horizontal-scrollable-tabs.preview-tabs-top {
+    padding-top: 0 !important;
+}
+
+.horizontal-scrollable-tabs .nav-tabs-horizontal {
+    border-bottom: 2px solid #e9ecef;
+    background-color: transparent !important;
+    background: transparent !important;
+}
+
+.horizontal-scrollable-tabs .nav-tabs-horizontal > li {
+    margin-bottom: -2px;
+}
+
+.horizontal-scrollable-tabs .nav-tabs-horizontal > li > a {
+    padding: 10px 18px;
+    border: none;
+    border-bottom: 3px solid transparent;
+    color: #6c757d;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    background: transparent !important;
+    border-radius: 0;
+}
+
+.horizontal-scrollable-tabs .nav-tabs-horizontal > li > a:hover {
+    background: #f8f9fa !important;
+    color: #495057;
+    border-bottom-color: #dee2e6;
+}
+
+.horizontal-scrollable-tabs .nav-tabs-horizontal > li.active > a,
+.horizontal-scrollable-tabs .nav-tabs-horizontal > li.active > a:hover,
+.horizontal-scrollable-tabs .nav-tabs-horizontal > li.active > a:focus {
+    border-bottom-color: #007bff;
+    color: #007bff;
+    background: transparent !important;
+    font-weight: 600;
+}
+
+.horizontal-scrollable-tabs .nav-tabs-horizontal > li.tab-separator > a {
+    padding: 8px 12px;
+    margin: 0 2px;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.horizontal-scrollable-tabs .nav-tabs-horizontal > li.tab-separator > a:hover {
+    background: #e9ecef;
+    border-bottom-color: transparent;
+}
+
+.horizontal-scrollable-tabs .nav-tabs-horizontal > li.tab-separator > a i {
+    font-size: 16px;
+    width: 20px;
+    text-align: center;
+}
+
+/* Prevent icon wrapping in horizontal tabs */
+.horizontal-scrollable-tabs {
+    background-color: transparent !important;
+    background: transparent !important;
+}
+
+.horizontal-scrollable-tabs .nav-tabs-horizontal {
+    display: flex;
+    flex-wrap: nowrap;
+    white-space: nowrap;
+    overflow-x: auto;
+    background-color: transparent !important;
+    background: transparent !important;
+}
+
+.horizontal-scrollable-tabs .nav-tabs-horizontal > li {
+    flex-shrink: 0;
+    white-space: nowrap;
+}
+
+.horizontal-scrollable-tabs .nav-tabs-horizontal > li.tab-separator {
+    flex-shrink: 0;
+    white-space: nowrap;
+}
+
+.horizontal-scrollable-tabs .nav-tabs-horizontal > li.tab-separator > a {
+    white-space: nowrap;
+    display: inline-block;
+}
+
+/* Fix time alignment in single mail view */
+.float-right.d-md-flex.fs-15 {
+    align-items: center;
+}
+
+.float-right.d-md-flex.fs-15 small {
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+
+/* Tag container styling */
+.mail-tag-container {
+    transition: all 0.2s ease;
+}
+
+.mail-tag-container:hover {
+    border-color: #007bff !important;
+    background: #f0f7ff !important;
+}
+
+.mail-tag-container label {
+    cursor: pointer;
+}
+
+/* Fix panel heading background color - override Tailwind CSS aggressively */
+#mailbox .panel-heading,
+#mailbox .panel-default > .panel-heading,
+#mailbox .panel-heading.panel-heading,
+.panel-heading,
+.panel-default > .panel-heading {
+    background-color: #f5f5f5 !important;
+    background: #f5f5f5 !important;
+    border-color: #ddd !important;
+    color: #333 !important;
+}
+
+#mailbox .panel-heading h4.panel-title,
+.panel-heading h4.panel-title,
+.panel-heading .panel-title {
+    color: #333 !important;
+    font-weight: 600;
+}
+
+/* Advanced Search Panel styling */
+#advanced_search_panel .panel-heading,
+#advanced_search_panel .panel-default > .panel-heading {
+    background-color: #f8f9fa !important;
+    background: #f8f9fa !important;
+    border-color: #dee2e6 !important;
+    color: #495057 !important;
+    padding: 12px 15px;
+}
+
+#advanced_search_panel .panel-heading h4.panel-title {
+    color: #495057 !important;
+    font-weight: 600;
+    margin: 0;
+}
+
+/* Advanced Search Button styling */
+#toggle_advanced_search_btn.btn-info {
+    background-color: #17a2b8 !important;
+    border-color: #17a2b8 !important;
+    color: #fff !important;
+}
+
+#toggle_advanced_search_btn.btn-info:hover,
+#toggle_advanced_search_btn.btn-info:focus {
+    background-color: #138496 !important;
+    border-color: #117a8b !important;
+    color: #fff !important;
+}
+
+/* Preview Pane Button styling */
+#toggle_preview_pane.btn-default {
+    background-color: #fff !important;
+    border-color: #ccc !important;
+    color: #333 !important;
+}
+
+#toggle_preview_pane.btn-default:hover,
+#toggle_preview_pane.btn-default:focus {
+    background-color: #e6e6e6 !important;
+    border-color: #adadad !important;
+    color: #333 !important;
+}
+
+/* Preview Panel styling */
+#mailbox_preview_panel .panel-heading,
+#mailbox_preview_panel .panel-default > .panel-heading {
+    background-color: #f8f9fa !important;
+    background: #f8f9fa !important;
+    border-color: #dee2e6 !important;
+    color: #495057 !important;
+    padding: 12px 15px;
+}
+
+#mailbox_preview_panel .panel-heading h4.panel-title {
+    color: #495057 !important;
+    font-weight: 600;
+    margin: 0;
+}
+
+/* Panel body styling */
+.panel-body {
+    background-color: #fff !important;
+    color: #333 !important;
+}
+
+/* Fix horizontal scrollbar issue with preview pane */
+#mailbox_split_view {
+    overflow-x: hidden;
+}
+
+#mailbox_split_view .row {
+    margin-left: 0;
+    margin-right: 0;
+}
+
+#mailbox_split_view .col-md-6 {
+    padding-left: 10px;
+    padding-right: 10px;
+    overflow-x: hidden;
+}
+
+#mailbox_list_panel,
+#mailbox_preview_panel {
+    overflow-x: hidden;
+    max-width: 100%;
+}
+
+#mailbox_preview_panel .panel-body {
+    overflow-x: auto;
+    word-wrap: break-word;
+}
+
+/* Ensure advanced search doesn't cause overflow */
+#advanced_search_panel {
+    overflow-x: hidden;
+}
+
+#advanced_search_panel .row {
+    margin-left: 0;
+    margin-right: 0;
+}
+
+#advanced_search_panel .col-md-3 {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+/* Mail Actions Dropdown - Hover Popup */
+/* Align first column header and body cells */
+.table-mailbox thead th:first-child,
+.table-mailbox-preview thead th:first-child {
+    text-align: left;
+    vertical-align: middle;
+    padding: 12px 8px !important;
+}
+
+.table-mailbox tbody td:first-child,
+.table-mailbox-preview tbody td:first-child {
+    text-align: left;
+    vertical-align: middle;
+    padding: 12px 8px !important;
+    overflow: visible !important;
+    position: relative;
+}
+
+.mail-row-actions {
+    display: flex;
+    align-items: center;
+    gap: 4px !important;
+    white-space: nowrap;
+    vertical-align: middle;
+    height: 100%;
+    min-height: 24px !important;
+    position: relative;
+}
+
+.mail-row-actions .checkbox {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+    vertical-align: middle;
+    flex-shrink: 0;
+    height: 18px;
+    width: 18px;
+}
+
+/* Match header checkbox styling */
+.table-mailbox thead th:first-child .checkbox,
+.table-mailbox-preview thead th:first-child .checkbox {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+    vertical-align: middle;
+}
+
+.table-mailbox .checkbox input[type="checkbox"],
+.table-mailbox-preview .checkbox input[type="checkbox"],
+.table-mailbox thead .checkbox input[type="checkbox"],
+.table-mailbox-preview thead .checkbox input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+    margin: 0;
+    vertical-align: middle;
+    flex-shrink: 0;
+}
+
+.table-mailbox .checkbox label,
+.table-mailbox-preview .checkbox label {
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+}
+
+/* Mail Actions Dropdown - Compact webmail style */
+.mail-actions-dropdown {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    vertical-align: middle;
+    z-index: 10;
+    flex-shrink: 0;
+    pointer-events: auto;
+    height: 18px !important;
+}
+
+.mail-actions-trigger {
+    padding: 2px 4px !important;
+    border: 1px solid #ddd;
+    background: #fff;
+    border-radius: 3px;
+    font-size: 12px !important;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 18px !important;
+    min-width: 18px !important;
+    width: 18px !important;
+    line-height: 1 !important;
+    vertical-align: middle;
+    position: relative;
+    pointer-events: auto;
+}
+
+.mail-actions-trigger:hover {
+    background: #f5f5f5;
+    border-color: #bbb;
+    z-index: 1002;
+}
+
+.mail-actions-trigger i {
+    font-size: 12px !important;
+    line-height: 1 !important;
+    margin: 0 !important;
+}
+
+.mail-actions-popup {
+    position: static;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+    min-width: 150px;
+    z-index: 999999 !important;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-5px);
+    transition: all 0.2s ease;
+    margin-top: 3px !important;
+    padding: 2px 0 !important;
+    pointer-events: auto;
+}
+
+.mail-actions-popup.show-above {
+    transform: translateY(0) !important;
+}
+
+.mail-actions-dropdown:hover {
+    z-index: 9999 !important;
+}
+
+.mail-actions-dropdown:hover .mail-actions-popup {
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: translateY(0);
+    z-index: 999999 !important;
+}
+
+.mail-actions-dropdown:hover .mail-actions-popup.show-above {
+    transform: translateY(0) !important;
+}
+
+/* Ensure pagination controls are visible - SCOPED to mailbox only */
+.mailbox-module-page .dataTables_wrapper .dataTables_paginate,
+.mailbox-module-page .dataTables_wrapper .dataTables_paging,
+body.mailbox .dataTables_wrapper .dataTables_paginate,
+body.mailbox .dataTables_wrapper .dataTables_paging,
+body.mailbox-emails .dataTables_wrapper .dataTables_paginate,
+body.mailbox-emails .dataTables_wrapper .dataTables_paging {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
+/* REMOVED: These were affecting all datatables site-wide, now scoped to mailbox only */
+
+.mail-action-item {
+    display: flex;
+    align-items: center;
+    padding: 4px 10px !important;
+    color: #333;
+    text-decoration: none;
+    transition: background-color 0.2s ease;
+    cursor: pointer;
+    white-space: nowrap;
+    pointer-events: auto;
+    user-select: none;
+    font-size: 12px !important;
+    line-height: 1.4 !important;
+}
+
+.mail-action-item:hover {
+    background-color: #f5f5f5;
+    color: #333;
+    text-decoration: none;
+}
+
+.mail-action-item i {
+    width: 16px !important;
+    margin-right: 6px !important;
+    text-align: center;
+    font-size: 12px !important;
+    flex-shrink: 0;
+}
+
+.mail-action-item .fa-star.orange {
+    color: #ffa726;
+}
+
+.mail-action-item .fa-bookmark.green,
+.mail-action-item .fa.fa-bookmark.green {
+    color: #66bb6a;
+}
+
+.mail-action-item .fa-trash {
+    color: #e53935;
+}
+
+.mail-action-item span {
+    font-size: 12px !important;
+    line-height: 1.4 !important;
+}
+
+/* Ensure popup appears above other elements */
+/* Ensure dropdown container has proper stacking context */
+.table-mailbox tbody tr .mail-actions-dropdown,
+.table-mailbox-preview tbody tr .mail-actions-dropdown {
+    position: relative;
+    z-index: 10;
+}
+
+.table-mailbox tbody tr:hover .mail-actions-dropdown,
+.table-mailbox-preview tbody tr:hover .mail-actions-dropdown {
+    z-index: 9999 !important;
+}
+
+.mail-actions-dropdown:hover {
+    z-index: 9999 !important;
+}
+
+.mail-actions-dropdown:hover .mail-actions-popup {
+    z-index: 9999 !important;
+}
+
+/* Compact Gmail-like view - reduce vertical padding */
+/* Center all table headers and body cells - Compact webmail style */
+.table-mailbox thead th,
+.table-mailbox-preview thead th {
+    text-align: center !important;
+    vertical-align: middle !important;
+    padding-top: 4px !important;
+    padding-bottom: 4px !important;
+    padding-left: 6px !important;
+    padding-right: 6px !important;
+    font-size: 12px !important;
+    line-height: 1.3 !important;
+}
+
+/* Fix sorting icon alignment in headers */
+.table-mailbox thead th.toggleable,
+.table-mailbox-preview thead th.toggleable {
+    position: relative;
+}
+
+.table-mailbox thead th.toggleable i.fa-sort,
+.table-mailbox-preview thead th.toggleable i.fa-sort,
+.table-mailbox thead th.toggleable i.fa-sort-asc,
+.table-mailbox-preview thead th.toggleable i.fa-sort-asc,
+.table-mailbox thead th.toggleable i.fa-sort-desc,
+.table-mailbox-preview thead th.toggleable i.fa-sort-desc {
+    vertical-align: middle !important;
+    line-height: 1 !important;
+    display: inline-block;
+    margin-left: 5px;
+    position: relative;
+    top: 0;
+}
+
+.table-mailbox tbody td,
+.table-mailbox-preview tbody td {
+    text-align: center !important;
+    vertical-align: middle !important;
+    padding-top: 3px !important;
+    padding-bottom: 3px !important;
+    padding-left: 6px !important;
+    padding-right: 6px !important;
+    font-size: 13px !important;
+    line-height: 1.4 !important;
+}
+
+/* First column (checkbox/actions) stays left-aligned but vertically centered - Compact */
+.table-mailbox thead th:first-child,
+.table-mailbox-preview thead th:first-child,
+.table-mailbox tbody td:first-child,
+.table-mailbox-preview tbody td:first-child {
+    text-align: left !important;
+    vertical-align: middle !important;
+    padding-top: 3px !important;
+    padding-bottom: 3px !important;
+    padding-left: 6px !important;
+    padding-right: 6px !important;
+    width: 40px !important;
+    min-width: 40px !important;
+    max-width: 40px !important;
+}
+
+/* Fix Date column padding - remove excessive right padding to prevent cutoff */
+.table-mailbox th#th-mailbox-date,
+.table-mailbox-preview th#th-mailbox-date,
+.table-mailbox th:last-child,
+.table-mailbox-preview th:last-child {
+    padding-right: 0 !important;
+    padding-left: 8px !important;
+    vertical-align: middle !important;
+    max-width: 150px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap !important;
+}
+
+.table-mailbox tbody td:last-child,
+.table-mailbox-preview tbody td:last-child {
+    padding-right: 0 !important;
+    padding-left: 8px !important;
+    vertical-align: middle !important;
+    max-width: 150px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap !important;
+    font-size: 11px !important;
+}
+
+/* Reduce Date column header font size */
+.table-mailbox th#th-mailbox-date,
+.table-mailbox-preview th#th-mailbox-date,
+.table-mailbox th:last-child,
+.table-mailbox-preview th:last-child {
+    font-size: 11px !important;
+}
+
+/* Responsive fix for Date column on smaller screens - minimal padding */
+@media (max-width: 768px) {
+    .table-mailbox th#th-mailbox-date,
+    .table-mailbox-preview th#th-mailbox-date,
+    .table-mailbox th:last-child,
+    .table-mailbox-preview th:last-child {
+        padding-right: 0 !important;
+        padding-left: 4px !important;
+        vertical-align: middle !important;
+        max-width: 120px;
+    }
+    
+    .table-mailbox tbody td:last-child,
+    .table-mailbox-preview tbody td:last-child {
+        padding-right: 0 !important;
+        padding-left: 4px !important;
+        white-space: nowrap !important;
+        vertical-align: middle !important;
+        max-width: 120px;
+    }
+}
+
+/* Style sorting icons to match other icons - Fix vertical alignment */
+.table-mailbox th.toggleable i.fa-sort,
+.table-mailbox-preview th.toggleable i.fa-sort,
+.table-mailbox th.toggleable i.fa-sort-asc,
+.table-mailbox-preview th.toggleable i.fa-sort-asc,
+.table-mailbox th.toggleable i.fa-sort-desc,
+.table-mailbox-preview th.toggleable i.fa-sort-desc {
+    color: #9e9e9e;
+    font-size: 14px;
+    margin-left: 5px;
+    opacity: 0.7;
+    transition: all 0.2s ease;
+    vertical-align: middle !important;
+    line-height: 1 !important;
+    display: inline-block;
+    position: relative;
+    top: -1px;
+}
+
+.table-mailbox th.toggleable:hover i.fa-sort,
+.table-mailbox-preview th.toggleable:hover i.fa-sort,
+.table-mailbox th.toggleable:hover i.fa-sort-asc,
+.table-mailbox-preview th.toggleable:hover i.fa-sort-asc,
+.table-mailbox th.toggleable:hover i.fa-sort-desc,
+.table-mailbox-preview th.toggleable:hover i.fa-sort-desc {
+    opacity: 1;
+    color: #666;
+}
+
+.table-mailbox th.toggleable.sorting_asc i.fa-sort-asc,
+.table-mailbox-preview th.toggleable.sorting_asc i.fa-sort-asc,
+.table-mailbox th.toggleable.sorting_desc i.fa-sort-desc,
+.table-mailbox-preview th.toggleable.sorting_desc i.fa-sort-desc {
+    opacity: 1;
+    color: #2196f3;
+}
+
+/* Ensure Bootstrap Select works correctly in preview pane */
+#preview_content .bootstrap-select.mail-tag-multiple,
+.email-preview .bootstrap-select.mail-tag-multiple,
+.email-header .bootstrap-select.mail-tag-multiple,
+#preview_content .bootstrap-select.mail-tag-multiple .dropdown-toggle,
+.email-preview .bootstrap-select.mail-tag-multiple .dropdown-toggle,
+.email-header .bootstrap-select.mail-tag-multiple .dropdown-toggle {
+    min-width: 350px !important;
+    width: 350px !important;
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    position: relative !important;
+    z-index: 1050 !important;
+}
+
+#preview_content .bootstrap-select.mail-tag-multiple,
+.email-preview .bootstrap-select.mail-tag-multiple,
+.email-header .bootstrap-select.mail-tag-multiple {
+    display: inline-block !important;
+    width: 350px !important;
+    z-index: 1050 !important;
+}
+
+#preview_content .bootstrap-select.mail-tag-multiple .dropdown-toggle,
+.email-preview .bootstrap-select.mail-tag-multiple .dropdown-toggle,
+.email-header .bootstrap-select.mail-tag-multiple .dropdown-toggle {
+    width: 100% !important;
+    padding: 8px 12px !important;
+    height: auto !important;
+    line-height: 1.5 !important;
+    display: block !important;
+    cursor: pointer !important;
+    z-index: 1051 !important;
+}
+
+#preview_content .bootstrap-select.mail-tag-multiple .dropdown-menu,
+.email-preview .bootstrap-select.mail-tag-multiple .dropdown-menu,
+.email-header .bootstrap-select.mail-tag-multiple .dropdown-menu {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    z-index: 1052 !important;
+    position: absolute !important;
+    top: 100% !important;
+    left: 0 !important;
+    min-width: 350px !important;
+    width: 100% !important;
+}
+
+#preview_content .bootstrap-select.mail-tag-multiple.open .dropdown-menu,
+.email-preview .bootstrap-select.mail-tag-multiple.open .dropdown-menu,
+.email-header .bootstrap-select.mail-tag-multiple.open .dropdown-menu {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    z-index: 1052 !important;
+}
+
+#preview_content .bootstrap-select.mail-tag-multiple .filter-option,
+.email-preview .bootstrap-select.mail-tag-multiple .filter-option,
+.email-header .bootstrap-select.mail-tag-multiple .filter-option {
+    display: block !important;
+    width: 100% !important;
+    text-align: left !important;
+    overflow: visible !important;
+}
+
+#preview_content .bootstrap-select.mail-tag-multiple .bs-caret,
+.email-preview .bootstrap-select.mail-tag-multiple .bs-caret,
+.email-header .bootstrap-select.mail-tag-multiple .bs-caret {
+    display: inline-block !important;
+    float: right !important;
+    margin-left: 8px !important;
+}
+
+#preview_content .bootstrap-select.mail-tag-multiple .bs-caret .caret,
+.email-preview .bootstrap-select.mail-tag-multiple .bs-caret .caret,
+.email-header .bootstrap-select.mail-tag-multiple .bs-caret .caret {
+    display: inline-block !important;
+    visibility: visible !important;
+}
+
+/* Ensure email-header and email-preview don't clip Bootstrap Select dropdown */
+.email-preview,
+.email-header {
+    overflow: visible !important;
+    position: relative !important;
+}
+
+.email-preview .select-placeholder,
+.email-header .select-placeholder {
+    position: relative !important;
+    z-index: 1050 !important;
+    overflow: visible !important;
+    filter: none !important;
+    -webkit-filter: none !important;
+    transform: none !important;
+    -webkit-transform: none !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+.email-preview .bootstrap-select,
+.email-header .bootstrap-select {
+    position: relative !important;
+    z-index: 1050 !important;
+    filter: none !important;
+    -webkit-filter: none !important;
+    transform: none !important;
+    -webkit-transform: none !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+.email-preview .bootstrap-select .dropdown-toggle,
+.email-header .bootstrap-select .dropdown-toggle {
+    filter: none !important;
+    -webkit-filter: none !important;
+    transform: none !important;
+    -webkit-transform: none !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+.email-preview .bootstrap-select .dropdown-menu,
+.email-header .bootstrap-select .dropdown-menu {
+    filter: none !important;
+    -webkit-filter: none !important;
+    transform: none !important;
+    -webkit-transform: none !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+}
+
+/* Prevent any parent elements from applying blur */
+.email-preview,
+.email-header,
+#preview_content {
+    filter: none !important;
+    -webkit-filter: none !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+}
+
+/* Override Tailwind CSS blur and opacity for labels in preview pane tag selection */
+.email-preview .select-placeholder label,
+.email-preview .select-placeholder label small,
+.email-header .select-placeholder label,
+.email-header .select-placeholder label small {
+    --tw-blur: none !important;
+    filter: none !important;
+    -webkit-filter: none !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    opacity: 1 !important;
+}
+
+/* Compact Advanced Search form styling */
+#advanced_search_panel .panel-body {
+    padding: 10px 15px !important;
+}
+
+#advanced_search_panel .form-group {
+    margin-bottom: 8px !important;
+}
+
+#advanced_search_panel .form-group label {
+    font-size: 11px !important;
+    margin-bottom: 3px !important;
+    font-weight: 500 !important;
+    line-height: 1.2 !important;
+}
+
+#advanced_search_panel .form-control,
+#advanced_search_panel input[type="text"],
+#advanced_search_panel input[type="date"],
+#advanced_search_panel select {
+    font-size: 11px !important;
+    height: 28px !important;
+    line-height: 1.4 !important;
+}
+
+/* Remove padding for tag, has attachment, and read status dropdowns */
+#advanced_search_panel #search_tag,
+#advanced_search_panel #search_has_attachment,
+#advanced_search_panel #search_read {
+    padding: 0 !important;
+}
+
+#advanced_search_panel #search_tag.bootstrap-select .dropdown-toggle,
+#advanced_search_panel #search_has_attachment.bootstrap-select .dropdown-toggle,
+#advanced_search_panel #search_read.bootstrap-select .dropdown-toggle {
+    padding: 4px 8px !important;
+}
+
+#advanced_search_panel .selectpicker {
+    font-size: 11px !important;
+}
+
+#advanced_search_panel .bootstrap-select .dropdown-toggle {
+    font-size: 11px !important;
+    padding: 4px 8px !important;
+    height: 28px !important;
+    line-height: 1.4 !important;
+}
+
+#advanced_search_panel .bootstrap-select .dropdown-menu {
+    font-size: 11px !important;
+}
+
+#advanced_search_panel .bootstrap-select .dropdown-menu li a {
+    padding: 4px 12px !important;
+    font-size: 11px !important;
+    line-height: 1.4 !important;
+}
+
+#advanced_search_panel .row {
+    margin-bottom: 8px !important;
+}
+
+#advanced_search_panel .row:last-child {
+    margin-bottom: 0 !important;
+    margin-top: 8px !important;
+}
+
+#advanced_search_panel .btn {
+    font-size: 11px !important;
+    padding: 5px 12px !important;
+    line-height: 1.4 !important;
+    height: auto !important;
+    min-height: 28px !important;
+}
+
+#advanced_search_panel .btn i {
+    font-size: 11px !important;
+    margin-right: 4px !important;
+}
+
+#advanced_search_panel .panel {
+    margin-bottom: 10px !important;
+}
+
+/* Make Advanced Search button match Density and Columns buttons style - transparent background */
+#toggle_advanced_search_btn.btn-info {
+    background-color: transparent !important;
+    background-image: none !important;
+    border-color: #ddd !important;
+    color: #333 !important;
+}
+
+#toggle_advanced_search_btn.btn-info:hover,
+#toggle_advanced_search_btn.btn-info:focus,
+#toggle_advanced_search_btn.btn-info:active {
+    background-color: #f5f5f5 !important;
+    background-image: none !important;
+    border-color: #bbb !important;
+    color: #333 !important;
+}
+
+#toggle_advanced_search_btn.btn-info i {
+    color: #333 !important;
+}
+
+/* Add right padding to Date column span */
+.table-mailbox tbody td:last-child span,
+.table-mailbox-preview tbody td:last-child span {
+    padding-right: 5px !important;
+}
+
+/* Row background colors for starred and important emails */
+.table-mailbox tbody tr.mailbox-row-starred,
+.table-mailbox-preview tbody tr.mailbox-row-starred {
+    background-color: #fff9e6 !important; /* Light yellow background */
+}
+
+.table-mailbox tbody tr.mailbox-row-starred:hover,
+.table-mailbox-preview tbody tr.mailbox-row-starred:hover {
+    background-color: #fff4cc !important; /* Slightly darker yellow on hover */
+}
+
+.table-mailbox tbody tr.mailbox-row-important,
+.table-mailbox-preview tbody tr.mailbox-row-important {
+    background-color: #e8f5e9 !important; /* Light green background */
+}
+
+.table-mailbox tbody tr.mailbox-row-important:hover,
+.table-mailbox-preview tbody tr.mailbox-row-important:hover {
+    background-color: #c8e6c9 !important; /* Slightly darker green on hover */
+}
+
+/* Email attachments list items padding */
+.email-attachments ul.list-unstyled li.mb-3 {
+    padding-top: 10px !important;
+}
+
+/* ============================================
+   MAIL ACTIONS - Click to Show (NOT Hover)
+   ============================================ */
+
+/* Mail actions container */
+.mail-row-actions {
+    display: flex !important;
+    align-items: center !important;
+    gap: 4px !important;
+}
+
+/* Checkbox vertical alignment with actions button */
+.mail-row-actions .checkbox {
+    position: relative !important;
+    top: 2px !important;
+}
+
+/* Actions dropdown container */
+.mail-actions-dropdown {
+    position: relative !important;
+    display: inline-block !important;
+}
+
+/* Three dots trigger button */
+.mail-actions-trigger {
+    padding: 2px 6px !important;
+    min-width: auto !important;
+    cursor: pointer !important;
+}
+
+/* Actions popup - HIDDEN by default */
+.mail-actions-popup {
+    display: none !important;
+    position: absolute !important;
+    top: 100% !important;
+    left: 0 !important;
+    z-index: 1050 !important;
+    min-width: 160px !important;
+    background: #fff !important;
+    border: 1px solid rgba(0,0,0,.15) !important;
+    border-radius: 4px !important;
+    box-shadow: 0 6px 12px rgba(0,0,0,.175) !important;
+    margin-top: 2px !important;
+    padding: 5px 0 !important;
+}
+
+/* Actions popup - SHOW on click (when .show class is added) */
+.mail-actions-popup.show {
+    display: block !important;
+}
+
+/* Action items */
+.mail-action-item {
+    display: block !important;
+    padding: 6px 12px !important;
+    clear: both !important;
+    font-weight: normal !important;
+    line-height: 1.42857143 !important;
+    color: #333 !important;
+    white-space: nowrap !important;
+    text-decoration: none !important;
+}
+
+.mail-action-item:hover {
+    background-color: #f5f5f5 !important;
+    color: #262626 !important;
+    text-decoration: none !important;
+}
+
+.mail-action-item i {
+    margin-right: 8px !important;
+    width: 14px !important;
+    text-align: center !important;
+}
+
+/* ============================================
+   PAGINATION STYLES - Minimal and Responsive
+   ============================================ */
+
+/* Pagination area - NO background, SCOPED to mailbox only */
+.mailbox-module-page .dataTables_wrapper .row:last-child,
+body.mailbox .dataTables_wrapper .row:last-child,
+body.mailbox-emails .dataTables_wrapper .row:last-child {
+    background-color: transparent !important;
+    border-top: 1px solid #e8e8e8 !important;
+    display: flex !important;
+    align-items: center !important;
+    padding: 6px 8px !important;
+    margin: 0 !important;
+}
+
+/* Force pagination row to use flexbox - SCOPED to mailbox only */
+.mailbox-module-page .dataTables_wrapper .dataTables_info,
+.mailbox-module-page .dataTables_wrapper .dataTables_paginate,
+body.mailbox .dataTables_wrapper .dataTables_info,
+body.mailbox .dataTables_wrapper .dataTables_paginate,
+body.mailbox-emails .dataTables_wrapper .dataTables_info,
+body.mailbox-emails .dataTables_wrapper .dataTables_paginate {
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+/* Override Tailwind's margin-top on pagination */
+.mailbox-module-page div.dataTables_wrapper div.dataTables_paging,
+body.mailbox div.dataTables_wrapper div.dataTables_paging,
+body.mailbox-emails div.dataTables_wrapper div.dataTables_paging {
+    margin-top: 0 !important;
+}
+
+/* Both columns - remove default display settings */
+.mailbox-module-page .dataTables_wrapper .row:last-child .col-md-4,
+.mailbox-module-page .dataTables_wrapper .row:last-child .col-md-8,
+body.mailbox .dataTables_wrapper .row:last-child .col-md-4,
+body.mailbox .dataTables_wrapper .row:last-child .col-md-8,
+body.mailbox-emails .dataTables_wrapper .row:last-child .col-md-4,
+body.mailbox-emails .dataTables_wrapper .row:last-child .col-md-8 {
+    float: none !important;
+}
+
+/* REMOVED: Let CRM default handle col-md-4 alignment */
+
+/* Right column - pagination controls with flexbox layout - SCOPED to mailbox only */
+.mailbox-module-page .dataTables_wrapper .row:last-child .col-md-8,
+body.mailbox .dataTables_wrapper .row:last-child .col-md-8,
+body.mailbox-emails .dataTables_wrapper .row:last-child .col-md-8 {
+    padding: 0 !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+}
+
+/* Dropdown (dt-page-jump) goes to the right */
+.mailbox-module-page .dt-page-jump,
+body.mailbox .dt-page-jump,
+body.mailbox-emails .dt-page-jump {
+    order: 2 !important;
+    margin-left: auto !important;
+}
+
+/* Pagination numbers stay in center */
+.mailbox-module-page .dataTables_wrapper .dataTables_paginate,
+body.mailbox .dataTables_wrapper .dataTables_paginate,
+body.mailbox-emails .dataTables_wrapper .dataTables_paginate {
+    order: 1 !important;
+}
+
+/* ColVis (if exists) stays hidden or on left */
+.mailbox-module-page #colvis,
+body.mailbox #colvis,
+body.mailbox-emails #colvis {
+    order: 0 !important;
+}
+
+/* Pagination info text - 12px, SCOPED to mailbox only */
+.mailbox-module-page .dataTables_info,
+.mailbox-module-page .col-md-4 .dataTables_info,
+.mailbox-module-page .dataTables_wrapper .dataTables_info,
+.mailbox-module-page div.dataTables_wrapper div.dataTables_info,
+body.mailbox .dataTables_info,
+body.mailbox .dataTables_wrapper .dataTables_info,
+body.mailbox-emails .dataTables_info,
+body.mailbox-emails .dataTables_wrapper .dataTables_info {
+    font-size: 12px !important;
+    line-height: 1.42857143 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    white-space: nowrap !important;
+}
+
+/* Ultra-compact page jump dropdown */
+.dt-page-jump-select.form-control,
+select.dt-page-jump-select {
+    font-size: 10px !important;
+    height: 22px !important;
+    padding: 1px 4px !important;
+    line-height: 1.2 !important;
+    min-width: 45px !important;
+    max-width: 60px !important;
+    margin: 0 !important;
+}
+
+/* Minimal dt-page-jump container */
+.dt-page-jump {
+    display: inline-block !important;
+    margin: 0 3px !important;
+    font-size: 10px !important;
+    vertical-align: middle !important;
+}
+
+/* Minimal colvis container */
+#colvis {
+    display: inline-block !important;
+    margin: 0 3px !important;
+    font-size: 10px !important;
+}
+
+/* Ultra-compact pagination wrapper */
+.dataTables_wrapper .dataTables_paginate {
+    margin: 0 !important;
+    padding: 0 !important;
+    display: inline-block !important;
+}
+
+/* Minimal pagination numbers - with vertical alignment */
+.dataTables_wrapper .pagination,
+div.dataTables_wrapper div.dataTables_paginate ul.pagination {
+    margin: 0 !important;
+    display: inline-block !important;
+    vertical-align: middle !important;
+    padding-top: 4px !important;
+}
+
+/* Ultra-compact pagination buttons */
+.dataTables_wrapper .pagination > li {
+    display: inline-block !important;
+    margin: 0 !important;
+}
+
+.dataTables_wrapper .pagination > li > a,
+.dataTables_wrapper .pagination .paginate_button a,
+.dataTables_paginate .paginate_button {
+    font-size: 10px !important;
+    padding: 1px 2px !important;
+    margin: 0 1px !important;
+    line-height: 1.2 !important;
+    min-width: 20px !important;
+    text-align: center !important;
+}
+
+/* Extra small Previous/Next buttons */
+.dataTables_wrapper .pagination .paginate_button.previous a,
+.dataTables_wrapper .pagination .paginate_button.next a,
+.dataTables_wrapper .pagination .paginate_button.previous,
+.dataTables_wrapper .pagination .paginate_button.next {
+    font-size: 9px !important;
+    padding: 1px 2px !important;
+}
+
+/* Compact page length selector */
+.dataTables_wrapper .dataTables_length select.form-control.input-sm {
+    font-size: 12px !important;
+    height: auto !important;
+    padding: 5px 10px !important;
+    line-height: 1.42857143 !important;
+}
+
+/* Compact filter input */
+.dataTables_wrapper .dataTables_filter input.form-control.input-sm {
+    font-size: 12px !important;
+    height: auto !important;
+    padding: 5px 10px !important;
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 991px) {
+    .dataTables_wrapper .row:last-child .col-md-4,
+    .dataTables_wrapper .row:last-child .col-md-8 {
+        width: 100% !important;
+        flex: 1 1 100% !important;
+        justify-content: center !important;
+        margin: 2px 0 !important;
+    }
+    
+    .dataTables_info {
+        font-size: 9px !important;
+    }
+}
+
+/* ============================================
+   MOBILE DEVICES ONLY - Horizontal Scrolling
+   Only for viewports smaller than tablets (< 768px)
+   ============================================ */
+@media (max-width: 767px) {
+    /* Enable horizontal scrolling for table container on mobile only */
+    .mailbox-module-page .table-responsive,
+    body.mailbox .table-responsive,
+    body.mailbox-emails .table-responsive,
+    #mailbox_full_table .table-responsive,
+    #mailbox_list_panel .table-responsive {
+        overflow-x: auto !important;
+        overflow-y: hidden !important;
+        -webkit-overflow-scrolling: touch !important;
+        width: 100% !important;
+        max-width: 100vw !important;
+        display: block !important;
+    }
+    
+    /* Ensure table can scroll horizontally on mobile */
+    .mailbox-module-page .table-mailbox,
+    .mailbox-module-page .table-mailbox-preview,
+    body.mailbox .table-mailbox,
+    body.mailbox .table-mailbox-preview,
+    body.mailbox-emails .table-mailbox,
+    body.mailbox-emails .table-mailbox-preview {
+        min-width: 600px !important;
+        width: auto !important;
+        table-layout: auto !important;
+    }
+    
+    /* Ensure DataTables wrapper allows horizontal scroll on mobile */
+    .mailbox-module-page .dataTables_wrapper,
+    body.mailbox .dataTables_wrapper,
+    body.mailbox-emails .dataTables_wrapper {
+        overflow-x: auto !important;
+        overflow-y: hidden !important;
+        width: 100% !important;
+        max-width: 100vw !important;
+    }
+    
+    /* Fix pagination row layout on mobile - stack vertically */
+    .mailbox-module-page .dataTables_wrapper .row:last-child,
+    body.mailbox .dataTables_wrapper .row:last-child,
+    body.mailbox-emails .dataTables_wrapper .row:last-child {
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        gap: 8px !important;
+        padding: 8px 4px !important;
+    }
+    
+    /* Pagination info - full width on mobile */
+    .mailbox-module-page .dataTables_wrapper .row:last-child .col-md-4,
+    body.mailbox .dataTables_wrapper .row:last-child .col-md-4,
+    body.mailbox-emails .dataTables_wrapper .row:last-child .col-md-4 {
+        width: 100% !important;
+        flex: 1 1 100% !important;
+        margin-bottom: 4px !important;
+        text-align: left !important;
+    }
+    
+    /* Pagination controls - full width on mobile, centered */
+    .mailbox-module-page .dataTables_wrapper .row:last-child .col-md-8,
+    body.mailbox .dataTables_wrapper .row:last-child .col-md-8,
+    body.mailbox-emails .dataTables_wrapper .row:last-child .col-md-8 {
+        width: 100% !important;
+        flex: 1 1 100% !important;
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+        flex-wrap: wrap !important;
+        gap: 4px !important;
+        padding: 0 !important;
+    }
+    
+    /* Pagination numbers - center on mobile */
+    .mailbox-module-page .dataTables_paginate,
+    body.mailbox .dataTables_paginate,
+    body.mailbox-emails .dataTables_paginate {
+        order: 1 !important;
+        width: 100% !important;
+        text-align: center !important;
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+    
+    /* Page jump dropdown - center on mobile */
+    .mailbox-module-page .dt-page-jump,
+    body.mailbox .dt-page-jump,
+    body.mailbox-emails .dt-page-jump {
+        order: 2 !important;
+        margin: 0 auto !important;
+        margin-top: 4px !important;
+    }
+    
+    /* Smaller pagination buttons on mobile */
+    .mailbox-module-page .dataTables_wrapper .pagination > li > a,
+    body.mailbox .dataTables_wrapper .pagination > li > a,
+    body.mailbox-emails .dataTables_wrapper .pagination > li > a {
+        font-size: 11px !important;
+        padding: 4px 8px !important;
+        min-width: 32px !important;
+    }
+    
+    /* Smaller pagination info text on mobile */
+    .mailbox-module-page .dataTables_info,
+    body.mailbox .dataTables_info,
+    body.mailbox-emails .dataTables_info {
+        font-size: 11px !important;
+        line-height: 1.4 !important;
+        white-space: normal !important;
+        word-wrap: break-word !important;
+    }
+    
+    /* Ensure table cells don't break layout on mobile */
+    .mailbox-module-page .table-mailbox td,
+    .mailbox-module-page .table-mailbox-preview td,
+    body.mailbox .table-mailbox td,
+    body.mailbox .table-mailbox-preview td,
+    body.mailbox-emails .table-mailbox td,
+    body.mailbox-emails .table-mailbox-preview td {
+        white-space: nowrap !important;
+        overflow: hidden !important;
+        text-overflow: ellipsis !important;
+        max-width: 200px !important;
+    }
+    
+    /* Subject and body columns can be wider on mobile scroll */
+    .mailbox-module-page .table-mailbox td:nth-child(4),
+    .mailbox-module-page .table-mailbox td:nth-child(5),
+    .mailbox-module-page .table-mailbox-preview td:nth-child(4),
+    .mailbox-module-page .table-mailbox-preview td:nth-child(5),
+    body.mailbox .table-mailbox td:nth-child(4),
+    body.mailbox .table-mailbox td:nth-child(5),
+    body.mailbox .table-mailbox-preview td:nth-child(4),
+    body.mailbox .table-mailbox-preview td:nth-child(5),
+    body.mailbox-emails .table-mailbox td:nth-child(4),
+    body.mailbox-emails .table-mailbox td:nth-child(5),
+    body.mailbox-emails .table-mailbox-preview td:nth-child(4),
+    body.mailbox-emails .table-mailbox-preview td:nth-child(5) {
+        max-width: 250px !important;
+    }
+    
+    /* Prevent wrapper from causing overflow issues */
+    .mailbox-module-page #mailbox_full_table,
+    .mailbox-module-page #mailbox_list_panel,
+    body.mailbox #mailbox_full_table,
+    body.mailbox #mailbox_list_panel,
+    body.mailbox-emails #mailbox_full_table,
+    body.mailbox-emails #mailbox_list_panel {
+        overflow-x: auto !important;
+        overflow-y: hidden !important;
+        width: 100% !important;
+        max-width: 100vw !important;
+    }
+    
+    /* Panel body should allow horizontal scroll on mobile */
+    .mailbox-module-page .panel-body,
+    body.mailbox .panel-body,
+    body.mailbox-emails .panel-body {
+        overflow-x: auto !important;
+        overflow-y: hidden !important;
+        padding: 10px 5px !important;
+    }
+}
+
+/* Ensure no extra spacing in pagination elements - SCOPED to mailbox only */
+.mailbox-module-page .dataTables_wrapper .dataTables_length,
+.mailbox-module-page .dataTables_wrapper .dataTables_filter,
+body.mailbox .dataTables_wrapper .dataTables_length,
+body.mailbox .dataTables_wrapper .dataTables_filter,
+body.mailbox-emails .dataTables_wrapper .dataTables_length,
+body.mailbox-emails .dataTables_wrapper .dataTables_filter {
+    font-size: 10px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+/* If both starred and important, prioritize important (green) */
+.table-mailbox tbody tr.mailbox-row-starred.mailbox-row-important,
+.table-mailbox-preview tbody tr.mailbox-row-starred.mailbox-row-important {
+    background-color: #e8f5e9 !important; /* Green takes priority */
+}
+
+.table-mailbox tbody tr.mailbox-row-starred.mailbox-row-important:hover,
+.table-mailbox-preview tbody tr.mailbox-row-starred.mailbox-row-important:hover {
+    background-color: #c8e6c9 !important; /* Green takes priority on hover */
+}
+
+/* Fix DataTables sorting icon vertical alignment - center with :after pseudo-element */
+table.dataTable thead .sorting:after,
+table.dataTable thead .sorting_asc:after,
+table.dataTable thead .sorting_desc:after,
+table.dataTable thead .sorting_asc_disabled:after,
+table.dataTable thead .sorting_desc_disabled:after {
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    margin-top: 0 !important;
+    line-height: 1 !important;
+    vertical-align: middle !important;
+    position: absolute !important;
+    right: 8px !important;
+}
+
+table.dataTable thead .sorting:before,
+table.dataTable thead .sorting_asc:before,
+table.dataTable thead .sorting_desc:before,
+table.dataTable thead .sorting_asc_disabled:before,
+table.dataTable thead .sorting_desc_disabled:before {
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    margin-top: 0 !important;
+    line-height: 1 !important;
+    vertical-align: middle !important;
+    position: absolute !important;
+    right: 8px !important;
+}
+
+/* Ensure DataTables header cells have relative positioning for absolute :after icons */
+table.dataTable thead th.sorting,
+table.dataTable thead th.sorting_asc,
+table.dataTable thead th.sorting_desc {
+    position: relative !important;
+    padding-right: 25px !important;
+}
+
+/* Compact navigation tabs - customer-tabs */
+.nav.navbar-pills.navbar-pills-flat.nav-tabs.nav-stacked.customer-tabs {
+    font-size: 13px !important;
+}
+
+.nav.navbar-pills.navbar-pills-flat.nav-tabs.nav-stacked.customer-tabs > li > a {
+    padding: 8px 12px !important;
+    font-size: 13px !important;
+    line-height: 1.4 !important;
+}
+
+.nav.navbar-pills.navbar-pills-flat.nav-tabs.nav-stacked.customer-tabs > li > a .menu-icon {
+    font-size: 14px !important;
+    width: 18px !important;
+    margin-right: 8px !important;
+}
+
+.nav.navbar-pills.navbar-pills-flat.nav-tabs.nav-stacked.customer-tabs > li > a .menu-badge {
+    font-size: 11px !important;
+    padding: 2px 6px !important;
+    margin-left: 6px !important;
+    line-height: 1.2 !important;
+}
+
+/* Compact mailbox tags navigation */
+.mailbox-tags-nav {
+    font-size: 13px !important;
+}
+
+.mailbox-tags-nav > li > a {
+    padding: 6px 10px !important;
+    font-size: 13px !important;
+    line-height: 1.4 !important;
+}
+
+.mailbox-tags-nav > li > a .label {
+    font-size: 11px !important;
+    padding: 2px 6px !important;
+    margin-right: 4px !important;
+    line-height: 1.2 !important;
+}
+
+/* Density modes - Cozy - smaller fonts */
+body.mailbox-density-cozy .table-mailbox thead th,
+body.mailbox-density-cozy .table-mailbox-preview thead th {
+    padding-top: 6px !important;
+    padding-bottom: 6px !important;
+    font-size: 12px !important;
+}
+
+body.mailbox-density-cozy .table-mailbox tbody td,
+body.mailbox-density-cozy .table-mailbox-preview tbody td {
+    padding-top: 6px !important;
+    padding-bottom: 6px !important;
+    font-size: 12px !important;
+}
+
+body.mailbox-density-cozy .table-mailbox tbody td span,
+body.mailbox-density-cozy .table-mailbox-preview tbody td span,
+body.mailbox-density-cozy .table-mailbox tbody td > span,
+body.mailbox-density-cozy .table-mailbox-preview tbody td > span,
+body.mailbox-density-cozy .table-mailbox tbody td a span,
+body.mailbox-density-cozy .table-mailbox-preview tbody td a span {
+    font-size: 12px !important;
+}
+
+body.mailbox-density-cozy .table-mailbox,
+body.mailbox-density-cozy .table-mailbox-preview {
+    font-size: 12px !important;
+}
+
+body.mailbox-density-cozy .mailbox-tag-label,
+body.mailbox-density-cozy .table-mailbox .label,
+body.mailbox-density-cozy .table-mailbox-preview .label {
+    font-size: 11px !important;
+    padding: 2px 6px !important;
+    margin-right: 3px !important;
+    line-height: 1.2 !important;
+}
+
+/* Date column font size for Cozy */
+body.mailbox-density-cozy .table-mailbox th#th-mailbox-date,
+body.mailbox-density-cozy .table-mailbox-preview th#th-mailbox-date,
+body.mailbox-density-cozy .table-mailbox th:last-child,
+body.mailbox-density-cozy .table-mailbox-preview th:last-child,
+body.mailbox-density-cozy .table-mailbox tbody td:last-child,
+body.mailbox-density-cozy .table-mailbox-preview tbody td:last-child {
+    font-size: 11px !important;
+}
+
+/* Density modes - Comfortable (MEDIUM) - medium fonts */
+body.mailbox-density-comfortable .table-mailbox thead th,
+body.mailbox-density-comfortable .table-mailbox-preview thead th {
+    padding-top: 8px !important;
+    padding-bottom: 8px !important;
+    font-size: 13px !important;
+}
+
+body.mailbox-density-comfortable .table-mailbox tbody td,
+body.mailbox-density-comfortable .table-mailbox-preview tbody td {
+    padding-top: 10px !important;
+    padding-bottom: 10px !important;
+    font-size: 13px !important;
+}
+
+body.mailbox-density-comfortable .table-mailbox tbody td span,
+body.mailbox-density-comfortable .table-mailbox-preview tbody td span,
+body.mailbox-density-comfortable .table-mailbox tbody td > span,
+body.mailbox-density-comfortable .table-mailbox-preview tbody td > span,
+body.mailbox-density-comfortable .table-mailbox tbody td a span,
+body.mailbox-density-comfortable .table-mailbox-preview tbody td a span {
+    font-size: 13px !important;
+}
+
+body.mailbox-density-comfortable .table-mailbox,
+body.mailbox-density-comfortable .table-mailbox-preview {
+    font-size: 13px !important;
+}
+
+body.mailbox-density-comfortable .mailbox-tag-label,
+body.mailbox-density-comfortable .table-mailbox .label,
+body.mailbox-density-comfortable .table-mailbox-preview .label {
+    font-size: 12px !important;
+    padding: 2px 6px !important;
+    margin-right: 3px !important;
+    line-height: 1.2 !important;
+}
+
+/* Date column font size for Comfortable */
+body.mailbox-density-comfortable .table-mailbox th#th-mailbox-date,
+body.mailbox-density-comfortable .table-mailbox-preview th#th-mailbox-date,
+body.mailbox-density-comfortable .table-mailbox th:last-child,
+body.mailbox-density-comfortable .table-mailbox-preview th:last-child,
+body.mailbox-density-comfortable .table-mailbox tbody td:last-child,
+body.mailbox-density-comfortable .table-mailbox-preview tbody td:last-child {
+    font-size: 12px !important;
+}
+
+/* Density modes - Compact (TINY) - smallest fonts */
+body.mailbox-density-compact .table-mailbox thead th,
+body.mailbox-density-compact .table-mailbox-preview thead th {
+    padding-top: 4px !important;
+    padding-bottom: 4px !important;
+    font-size: 11px !important;
+    line-height: 1.2 !important;
+}
+
+body.mailbox-density-compact .table-mailbox tbody td,
+body.mailbox-density-compact .table-mailbox-preview tbody td {
+    padding-top: 3px !important;
+    padding-bottom: 3px !important;
+    font-size: 11px !important;
+    line-height: 1.3 !important;
+}
+
+body.mailbox-density-compact .table-mailbox tbody td span,
+body.mailbox-density-compact .table-mailbox-preview tbody td span,
+body.mailbox-density-compact .table-mailbox tbody td > span,
+body.mailbox-density-compact .table-mailbox-preview tbody td > span,
+body.mailbox-density-compact .table-mailbox tbody td a span,
+body.mailbox-density-compact .table-mailbox-preview tbody td a span {
+    font-size: 11px !important;
+}
+
+body.mailbox-density-compact .table-mailbox,
+body.mailbox-density-compact .table-mailbox-preview {
+    font-size: 11px !important;
+}
+
+body.mailbox-density-compact .mailbox-tag-label,
+body.mailbox-density-compact .table-mailbox .label,
+body.mailbox-density-compact .table-mailbox-preview .label {
+    font-size: 10px !important;
+    padding: 1px 4px !important;
+    margin-right: 2px !important;
+    line-height: 1.1 !important;
+}
+
+/* Date column font size for Compact */
+body.mailbox-density-compact .table-mailbox th#th-mailbox-date,
+body.mailbox-density-compact .table-mailbox-preview th#th-mailbox-date,
+body.mailbox-density-compact .table-mailbox th:last-child,
+body.mailbox-density-compact .table-mailbox-preview th:last-child,
+body.mailbox-density-compact .table-mailbox tbody td:last-child,
+body.mailbox-density-compact .table-mailbox-preview tbody td:last-child {
+    font-size: 10px !important;
+}
+
+/* Density font sizes for Preview Pane - Cozy */
+body.mailbox-density-cozy .email-preview,
+body.mailbox-density-cozy #preview_content,
+body.mailbox-density-cozy .email-preview .email-header,
+body.mailbox-density-cozy .email-preview .email-header h4,
+body.mailbox-density-cozy .email-preview .email-meta,
+body.mailbox-density-cozy .email-preview .email-meta p,
+body.mailbox-density-cozy .email-preview .email-body,
+body.mailbox-density-cozy .email-preview .email-body p,
+body.mailbox-density-cozy .email-preview .email-attachments,
+body.mailbox-density-cozy .email-preview .email-attachments h5,
+body.mailbox-density-cozy .email-preview .email-attachments li,
+body.mailbox-density-cozy .email-preview .email-attachments a,
+body.mailbox-density-cozy #mailbox_preview_panel .panel-title,
+body.mailbox-density-cozy #mailbox_preview_panel .panel-heading h4 {
+    font-size: 12px !important;
+}
+
+/* Checkbox alignment for cozy view */
+body.mailbox-density-cozy .mail-row-actions .checkbox {
+    top: 1px !important;
+}
+
+/* Density font sizes for Preview Pane - Comfortable */
+body.mailbox-density-comfortable .email-preview,
+body.mailbox-density-comfortable #preview_content,
+body.mailbox-density-comfortable .email-preview .email-header,
+body.mailbox-density-comfortable .email-preview .email-header h4,
+body.mailbox-density-comfortable .email-preview .email-meta,
+body.mailbox-density-comfortable .email-preview .email-meta p,
+body.mailbox-density-comfortable .email-preview .email-body,
+body.mailbox-density-comfortable .email-preview .email-body p,
+body.mailbox-density-comfortable .email-preview .email-attachments,
+body.mailbox-density-comfortable .email-preview .email-attachments h5,
+body.mailbox-density-comfortable .email-preview .email-attachments li,
+body.mailbox-density-comfortable .email-preview .email-attachments a,
+body.mailbox-density-comfortable #mailbox_preview_panel .panel-title,
+body.mailbox-density-comfortable #mailbox_preview_panel .panel-heading h4 {
+    font-size: 13px !important;
+}
+
+/* Density font sizes for Preview Pane - Compact */
+body.mailbox-density-compact .email-preview,
+body.mailbox-density-compact #preview_content,
+body.mailbox-density-compact .email-preview .email-header,
+body.mailbox-density-compact .email-preview .email-header h4,
+body.mailbox-density-compact .email-preview .email-meta,
+body.mailbox-density-compact .email-preview .email-meta p,
+body.mailbox-density-compact .email-preview .email-body,
+body.mailbox-density-compact .email-preview .email-body p,
+body.mailbox-density-compact .email-preview .email-attachments,
+body.mailbox-density-compact .email-preview .email-attachments h5,
+body.mailbox-density-compact .email-preview .email-attachments li,
+body.mailbox-density-compact .email-preview .email-attachments a,
+body.mailbox-density-compact #mailbox_preview_panel .panel-title,
+body.mailbox-density-compact #mailbox_preview_panel .panel-heading h4 {
+    font-size: 11px !important;
+}
+
+/* Checkbox alignment for compact view */
+body.mailbox-density-compact .mail-row-actions .checkbox {
+    top: 1px !important;
+}
+
+/* Density font sizes for Single Email View - Cozy */
+body.mailbox-density-cozy .email-media,
+body.mailbox-density-cozy .email-media .media-body,
+body.mailbox-density-cozy .email-media .media-title,
+body.mailbox-density-cozy .email-media p,
+body.mailbox-density-cozy .email-body,
+body.mailbox-density-cozy .email-body p,
+body.mailbox-density-cozy .eamil-body,
+body.mailbox-density-cozy .eamil-body p {
+    font-size: 12px !important;
+}
+
+/* Density font sizes for Single Email View - Comfortable */
+body.mailbox-density-comfortable .email-media,
+body.mailbox-density-comfortable .email-media .media-body,
+body.mailbox-density-comfortable .email-media .media-title,
+body.mailbox-density-comfortable .email-media p,
+body.mailbox-density-comfortable .email-body,
+body.mailbox-density-comfortable .email-body p,
+body.mailbox-density-comfortable .eamil-body,
+body.mailbox-density-comfortable .eamil-body p {
+    font-size: 13px !important;
+}
+
+/* Density font sizes for Single Email View - Compact */
+body.mailbox-density-compact .email-media,
+body.mailbox-density-compact .email-media .media-body,
+body.mailbox-density-compact .email-media .media-title,
+body.mailbox-density-compact .email-media p,
+body.mailbox-density-compact .email-body,
+body.mailbox-density-compact .email-body p,
+body.mailbox-density-compact .eamil-body,
+body.mailbox-density-compact .eamil-body p {
+    font-size: 11px !important;
+}
+
+/* Prevent horizontal scrollbars in Preview Pane and Single Email View */
+#preview_content,
+#preview_content .email-preview,
+.email-preview,
+.email-preview .email-header,
+.email-preview .email-meta,
+.email-preview .email-body,
+.email-preview .email-attachments,
+.email-body,
+.eamil-body,
+.email-media,
+.email-media .media-body {
+    max-width: 100% !important;
+    width: 100% !important;
+    overflow-x: hidden !important;
+    box-sizing: border-box !important;
+    word-wrap: break-word !important;
+    overflow-wrap: break-word !important;
+}
+
+/* Ensure images and other content in email body don't cause overflow */
+.email-preview .email-body img,
+.email-preview .email-body table,
+.email-preview .email-body iframe,
+.email-body img,
+.email-body table,
+.email-body iframe,
+.eamil-body img,
+.eamil-body table,
+.eamil-body iframe {
+    max-width: 100% !important;
+    height: auto !important;
+}
+
+/* Ensure tables in email body wrap properly */
+.email-preview .email-body table,
+.email-body table,
+.eamil-body table {
+    table-layout: auto !important;
+    width: 100% !important;
+    overflow-x: auto !important;
+    display: block !important;
+}
+
+.email-preview .email-body table thead,
+.email-preview .email-body table tbody,
+.email-preview .email-body table tr,
+.email-body table thead,
+.email-body table tbody,
+.email-body table tr,
+.eamil-body table thead,
+.eamil-body table tbody,
+.eamil-body table tr {
+    display: table !important;
+    width: 100% !important;
+    table-layout: fixed !important;
+}
+
+/* Hide sorting icon in preview pane table headers */
+.table-mailbox-preview th.sorting_desc:after,
+.table-mailbox-preview th.sorting_asc:after,
+.table-mailbox-preview th.sorting:after {
+    display: none !important;
+}
+
+/* Ensure DataTables footer has LOW z-index - SCOPED to mailbox only */
+.mailbox-module-page .dataTables_wrapper .row,
+.mailbox-module-page .dataTables_wrapper .dataTables_info,
+.mailbox-module-page .dataTables_wrapper .dataTables_paginate,
+body.mailbox .dataTables_wrapper .row,
+body.mailbox .dataTables_wrapper .dataTables_info,
+body.mailbox .dataTables_wrapper .dataTables_paginate,
+body.mailbox-emails .dataTables_wrapper .row,
+body.mailbox-emails .dataTables_wrapper .dataTables_info,
+body.mailbox-emails .dataTables_wrapper .dataTables_paginate {
+    position: relative !important;
+    z-index: 1 !important;
+}
+
+/* Ensure DataTables wrapper itself has low z-index and doesn't create stacking context */
+.dataTables_wrapper {
+    position: relative !important;
+    z-index: 1 !important;
+    isolation: auto !important;
+}
+
+/* Ensure table container doesn't create stacking context */
+.table-responsive,
+.dataTables_scrollBody,
+.dataTables_scroll {
+    position: relative !important;
+    z-index: 1 !important;
+    isolation: auto !important;
+}
+
+/* Ensure table rows with actions have higher z-index than footer */
+.table-mailbox tbody tr,
+.table-mailbox-preview tbody tr {
+    position: relative !important;
+    z-index: 1 !important;
+}
+
+.table-mailbox tbody tr:hover,
+.table-mailbox-preview tbody tr:hover {
+    z-index: 2 !important;
+    isolation: auto !important;
+}
+
+/* Mail actions dropdown and popup - ensure they appear above everything */
+.mail-row-actions {
+    position: relative !important;
+    z-index: 3 !important;
+}
+
+.table-mailbox tbody tr:hover .mail-row-actions,
+.table-mailbox-preview tbody tr:hover .mail-row-actions {
+    z-index: 3 !important;
+}
+
+.mail-actions-dropdown {
+    position: relative !important;
+    z-index: 1000 !important;
+}
+
+.table-mailbox tbody tr:hover .mail-actions-dropdown,
+.table-mailbox-preview tbody tr:hover .mail-actions-dropdown {
+    z-index: 1000 !important;
+}
+
+.table-mailbox tbody tr:hover .mail-actions-popup,
+.table-mailbox-preview tbody tr:hover .mail-actions-popup {
+    z-index: 1001 !important;
+}
+
+/* Make Advanced Search button match Density and Columns buttons style - transparent background */
+#toggle_advanced_search_btn.btn-info {
+    background-color: transparent !important;
+    background-image: none !important;
+    border-color: #ddd !important;
+    color: #333 !important;
+}
+
+#toggle_advanced_search_btn.btn-info:hover,
+#toggle_advanced_search_btn.btn-info:focus,
+#toggle_advanced_search_btn.btn-info:active {
+    background-color: #f5f5f5 !important;
+    background-image: none !important;
+    border-color: #bbb !important;
+    color: #333 !important;
+}
+
+#toggle_advanced_search_btn.btn-info i {
+    color: #333 !important;
+}/ *   T E S T :   F i l e   u p d a t e d   a t   T u e   J a n   2 0   0 7 : 1 2 : 4 5   F L E S T   2 0 2 6   * / 
+ 
+ 
+ 
+ / *   E m a i l   a t t a c h m e n t s   l i s t   i t e m s   p a d d i n g   * / 
+ 
+ . e m a i l - a t t a c h m e n t s   u l . l i s t - u n s t y l e d   l i . m b - 3   { 
+ 
+         p a d d i n g - t o p :   1 0 p x   ! i m p o r t a n t ; 
+ 
+ } 
+ 
+ 
+/* Rules page panel body padding - more specific selector */
+#mailbox .panel_s .panel-body,
+.panel_s .panel-body,
+div.panel_s div.panel-body {
+    padding: 20px !important;
+}
+
+/* ============================================
+   COLLAPSIBLE EMAIL THREADING (Gmail-style)
+   ============================================ */
+
+/* Thread expand/collapse icons */
+.thread-expand-icon,
+.thread-collapse-icon {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    user-select: none;
+    padding: 4px 8px;
+    margin: -4px -8px;
+    pointer-events: all;
+    position: relative;
+    z-index: 10;
+}
+
+.thread-expand-icon:hover,
+.thread-collapse-icon:hover {
+    opacity: 0.7;
+}
+
+.thread-expand-icon i.fa-caret-right {
+    transition: transform 0.2s ease;
+}
+
+.thread-expand-icon:hover i.fa-caret-right {
+    transform: translateX(2px);
+}
+
+/* Thread metadata (participants) */
+.thread-metadata {
+    font-size: 11px;
+    color: #999;
+    margin-top: 2px;
+    margin-left: 32px;
+    font-weight: normal;
+}
+
+/* Thread rows styling */
+tr.thread-parent-row {
+    background-color: #fafafa !important;
+}
+
+tr.thread-child-row {
+    background-color: #f5f5f5 !important;
+}
+
+tr.thread-child-row:hover {
+    background-color: #ececec !important;
+}
+
+/* Ensure child row cells respect table width and wrap text */
+tr.thread-child-row td {
+    max-width: 300px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    word-wrap: break-word;
+    word-break: break-word;
+}
+
+/* Subject column should have more space but still constrained */
+tr.thread-child-row td:nth-child(5) {
+    max-width: 400px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Body/preview column should be constrained */
+tr.thread-child-row td:nth-child(6) {
+    max-width: 250px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Date column should not wrap */
+tr.thread-child-row td:nth-child(8) {
+    max-width: 120px;
+    white-space: nowrap;
+}
+
+/* Ensure tables stay within container but allow natural column widths */
+.table-mailbox,
+.table-mailbox-preview {
+    width: 100% !important;
+    table-layout: auto !important; /* Changed from fixed to auto for responsive columns */
+}
+
+/* Prevent any cell from causing table overflow */
+.table-mailbox td,
+.table-mailbox-preview td {
+    word-wrap: break-word;
+    word-break: break-word;
+    overflow-wrap: break-word;
+}
+
+/* Thread child rows should never force horizontal scroll */
+tr.thread-child-row {
+    max-width: 100%;
+}
+
+/* ============================================
+   ADDITIONAL UI FIXES
+   ============================================ */
+
+/* Fix 1: Star icon always visible with orange color */
+.orange {
+    color: #ff9800 !important;
+}
+
+.fa-star.orange {
+    color: #ff9800 !important;
+}
+
+/* Fix 2: Hide sorting arrows by default, show on hover */
+.dataTables_wrapper table.dataTable thead th.sorting:after,
+.dataTables_wrapper table.dataTable thead th.sorting_asc:after,
+.dataTables_wrapper table.dataTable thead th.sorting_desc:after {
+    opacity: 0 !important;
+    transition: opacity 0.2s ease;
+}
+
+.dataTables_wrapper table.dataTable thead th.sorting:hover:after,
+.dataTables_wrapper table.dataTable thead th.sorting_asc:hover:after,
+.dataTables_wrapper table.dataTable thead th.sorting_desc:hover:after {
+    opacity: 0.3 !important;
+}
+
+/* Fix 3: Tab content padding in single view ONLY (not email templates, rules, etc) */
+#mailbox .tab-content:has(.email-media),
+#mailbox .tab-content:has(.email-body) {
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+}
+
+/* Fix 4: Actions popup - prevent cut off by pagination */
+.mail-actions-popup {
+    z-index: 9999 !important;
+    position: absolute !important;
+    margin-top: -5px !important;
+}
+
+/* Ensure actions show above pagination */
+tr:last-child .mail-actions-popup,
+tr:nth-last-child(2) .mail-actions-popup,
+tr:nth-last-child(3) .mail-actions-popup {
+    bottom: 100% !important;
+    top: auto !important;
+    margin-top: 0 !important;
+    margin-bottom: 5px !important;
+}
+
+/* Fix 5: Checkbox alignment - Comfortable view only */
+.density-comfortable .mail-row-actions .checkbox {
+    top: 0px !important;
+}
+
+/* Keep existing padding for other views */
+.density-cozy .mail-row-actions .checkbox,
+.density-compact .mail-row-actions .checkbox {
+    top: 1px !important;
+}
+
+/* Indentation for nested thread emails */
+tr.thread-child-row td:first-child {
+    padding-left: 35px !important;
+}
+
+tr.thread-child-row.depth-1 td:first-child {
+    padding-left: 35px !important;
+}
+
+tr.thread-child-row.depth-2 td:first-child {
+    padding-left: 50px !important;
+}
+
+tr.thread-child-row.depth-3 td:first-child {
+    padding-left: 65px !important;
+}
+
+/* Tree connectors for nested emails */
+.thread-connector {
+    display: inline-block;
+    margin-right: 8px;
+    color: #ccc;
+    font-size: 14px;
+}
+
+/* Loading indicator for thread expansion */
+.thread-loading {
+    display: inline-block;
+    margin-left: 8px;
+}
+
+.thread-loading:after {
+    content: '...';
+    animation: thread-loading-dots 1.5s steps(4, end) infinite;
+}
+
+@keyframes thread-loading-dots {
+    0%, 20% { content: '.'; }
+    40% { content: '..'; }
+    60%, 100% { content: '...'; }
+}
+
+/* Thread count badge */
+.thread-expand-icon strong {
+    font-size: 11px;
+    color: #666;
+}
+
+/* Collapsed thread row highlight on hover */
+tr:has(.thread-expand-icon):hover {
+    background-color: #f9f9f9 !important;
+}
+
+/* Smooth transitions for row insertion */
+tr.thread-child-row {
+    animation: thread-row-fade-in 0.3s ease;
+}
+
+@keyframes thread-row-fade-in {
+    from {
+        opacity: 0;
+        transform: translateY(-5px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ============================================
+   Active Menu Items Styling
+   Make active submenu items bold
+   ============================================ */
+
+/* Emails submenu - active when on mailbox index */
+body.mailbox-emails #side-menu li[data-slug="mailbox-emails"] > a {
+    font-weight: bold !important;
+}
+
+/* Tags submenu - active when on tags page */
+body.mailbox-tags #side-menu li[data-slug="mailbox-tags"] > a {
+    font-weight: bold !important;
+}
+
+/* Contacts submenu - active when on contacts page */
+body.mailbox-contacts #side-menu li[data-slug="mailbox-contacts"] > a {
+    font-weight: bold !important;
+}
+
+/* Email Templates submenu - active when on email templates page */
+body.mailbox-email-templates #side-menu li[data-slug="mailbox-email-templates"] > a {
+    font-weight: bold !important;
+}
+
+/* Auto Replies submenu - active when on auto replies page */
+body.mailbox-auto-replies #side-menu li[data-slug="mailbox-auto-replies"] > a {
+    font-weight: bold !important;
+}
+
+/* Rules submenu - active when on rules page */
+body.mailbox-rules #side-menu li[data-slug="mailbox-rules"] > a {
+    font-weight: bold !important;
+}
+
+/* Config submenu - active when on config page */
+body.mailbox-config #side-menu li[data-slug="mailbox-config"] > a {
+    font-weight: bold !important;
+}
+
+/* Settings submenu - active when on settings page with mailbox_settings group */
+body.mailbox-settings #side-menu li[data-slug="mailbox-settings"] > a {
+    font-weight: bold !important;
+}
+
+/* Ensure mailbox parent menu is always expanded when on any mailbox page */
+body.mailbox #side-menu li.menu-item-mailbox {
+    /* The parent li will be handled by Perfex's default menu logic */
+}
+
+body.mailbox #side-menu li.menu-item-mailbox > ul {
+    display: block !important;
+}
+
+body.mailbox #side-menu li.menu-item-mailbox > a {
+    /* Optionally make parent bold too */
+    font-weight: 600 !important;
+}

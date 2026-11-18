@@ -1,0 +1,17 @@
+{
+    "name": "perfex/mailbox-module",
+    "description": "Mailbox module for Perfex CRM with OAuth2 support",
+    "type": "perfex-module",
+    "require": {
+        "php": ">=7.4",
+        "webklex/php-imap": "^4.0",
+        "firebase/php-jwt": "^6.0",
+        "rmccue/requests": "^2.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "modules\\mailbox\\services\\": "services/",
+            "modules\\mailbox\\services\\oauth\\": "services/oauth/"
+        }
+    }
+}

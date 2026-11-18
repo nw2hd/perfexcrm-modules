@@ -1,0 +1,15 @@
+# Composer
+# Note: Vendor folder is INCLUDED in repository for plug-and-play installation
+# Users don't need to run composer - everything is ready to use
+composer.lock
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
